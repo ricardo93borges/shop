@@ -11,8 +11,7 @@ export default function Home() {
       <main>
         <h1 className="is-size-3 mb-5 mt-5">Devices</h1>
         <List />
-        <Modal isActive={false} content={<ItemModalContent />} />
-        <Modal isActive={false} content={<DataChangeModalContent />} />
+        {/* <Modal isActive={false} content={<DataChangeModalContent />} /> */}
       </main>
     </div>
   );

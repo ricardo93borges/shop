@@ -1,30 +1,42 @@
+import { useFetch } from "@/hooks/use-fetch";
+import { Product } from "@/models/Product";
+import Modal from "./modal";
+import ItemModalContent from "./item-modal-content";
+import { useState } from "react";
+
 export default function List() {
+  const { data } = useFetch<Product[]>("products");
+  const [modalIsActive, setModalIsActive] = useState(false);
+  const [productToDisplay, setProductToDisplay] = useState<Product>();
+
+  const openModal = (product: Product) => {
+    setProductToDisplay(product);
+    setModalIsActive(true);
+  };
+
   return (
     <>
-      <div className="box">
-        <div className="columns">
-          <div className="column is-10">
-            <p>
-              <a>Apple Iphone 11</a>
-            </p>
+      {modalIsActive && (
+        <Modal
+          close={() => setModalIsActive(false)}
+          content={<ItemModalContent product={productToDisplay} />}
+        />
+      )}
+      {data &&
+        data.map((product: Product) => (
+          <div className="box" key={product.id}>
+            <div className="columns">
+              <div className="column is-10">
+                <p>
+                  <a onClick={() => openModal(product)}>{product.name}</a>
+                </p>
+              </div>
+              <div className="column is-12">
+                <p>{product.quantity}</p>
+              </div>
+            </div>
           </div>
-          <div className="column is-12">
-            <p>12</p>
-          </div>
-        </div>
-      </div>
-      <div className="box">
-        <div className="columns">
-          <div className="column is-10">
-            <p>
-              <a>Apple Iphone 11</a>
-            </p>
-          </div>
-          <div className="column is-12">
-            <p>10</p>
-          </div>
-        </div>
-      </div>
+        ))}
     </>
   );
 }

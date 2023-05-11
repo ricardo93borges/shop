@@ -1,25 +1,28 @@
-export default function ItemModalContent() {
+import { Product } from "@/models/Product";
+
+export interface ItemModalContentProps {
+  product?: Product;
+}
+
+export default function ItemModalContent({ product }: ItemModalContentProps) {
+  if (!product) return <></>;
+
   return (
     <>
       <div className="columns">
         <div className="column is-8">
-          <h1 className="is-size-3">Apple Iphone 11</h1>
+          <h1 className="is-size-3">{product.name}</h1>
         </div>
         <div className="column is-2">
-          <h1 className="is-size-3 has-text-centered">$699</h1>
+          <h1 className="is-size-3 has-text-centered">{product.price}</h1>
         </div>
         <div className="column is-2">
-          <h1 className="is-size-3 has-text-centered">8</h1>
+          <h1 className="is-size-3 has-text-centered">{product.quantity}</h1>
         </div>
       </div>
       <div className="columns">
         <div className="column">
-          <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-            eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
-            ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-            aliquip ex ea commodo consequat.
-          </p>
+          <p>{product.description}</p>
         </div>
       </div>
       <div className="columns">
