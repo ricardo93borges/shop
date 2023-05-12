@@ -1,18 +1,20 @@
-import DataChangeModalContent from "@/components/data-change-modal-content";
-import Header from "@/components/header";
-import ItemModalContent from "@/components/item-modal-content";
-import List from "@/components/list";
 import Modal from "@/components/modal";
+import { CartProvider } from "@/context/cart/provider";
+import Header from "@/components/header";
+import List from "@/components/list";
+import DataChangeModalContent from "@/components/data-change-modal-content";
 
 export default function Home() {
   return (
     <div className="container">
-      <Header />
-      <main>
-        <h1 className="is-size-3 mb-5 mt-5">Devices</h1>
-        <List />
-        {/* <Modal isActive={false} content={<DataChangeModalContent />} /> */}
-      </main>
+      <CartProvider>
+        <Header />
+        <main>
+          <h1 className="is-size-3 mb-5 mt-5">Devices</h1>
+          <List />
+          {/* <Modal isActive={false} content={<DataChangeModalContent />} /> */}
+        </main>
+      </CartProvider>
     </div>
   );
 }
