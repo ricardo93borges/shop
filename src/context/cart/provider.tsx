@@ -14,7 +14,6 @@ export function CartProvider({ children }: CartProviderProps) {
       <CartDispatchContext.Provider value={dispatch}>
         {children}
       </CartDispatchContext.Provider>
-      ;
     </CartContext.Provider>
   );
 }
