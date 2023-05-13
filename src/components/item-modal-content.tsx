@@ -45,11 +45,13 @@ export default function ItemModalContent({ product }: ItemModalContentProps) {
   return (
     <>
       <div className="columns">
-        <div className="column is-8">
+        <div className="column is-7">
           <h1 className="is-size-3">{product.name}</h1>
         </div>
-        <div className="column is-2">
-          <h1 className="is-size-3 has-text-centered">{product.price}</h1>
+        <div className="column is-3">
+          <h1 className="is-size-3 has-text-centered">
+            $ {product.price / 10}
+          </h1>
         </div>
         <div className="column is-2">
           <h1 className="is-size-3 has-text-centered">{product.quantity}</h1>
